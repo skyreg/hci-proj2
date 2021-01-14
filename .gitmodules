@@ -1,0 +1,6 @@
+[submodule "Assets/ExternalAssets/NativeWebSocket"]
+	path = Assets/ExternalAssets/NativeWebSocket
+	url = https://github.com/endel/NativeWebSocket.git
+[submodule "Assets/ExternalAssets/SimpleJSON"]
+	path = Assets/ExternalAssets/SimpleJSON
+	url = https://github.com/Bunny83/SimpleJSON.git
