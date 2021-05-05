@@ -124,7 +124,7 @@ public class WebsocketZedVisualizer : MonoBehaviour
     if (!track) {
       GameObject o = new GameObject(IdToTrackId(id));
       o.transform.parent = Skeletons;
-      track = o.transform;
+      track = o.transform; //we can add collider/mesh here
     }
 
     Transform skeleton = track.Find("Skeleton");
@@ -236,9 +236,23 @@ public class WebsocketZedVisualizer : MonoBehaviour
     if (!joint) {
       GameObject o = GameObject.CreatePrimitive(PrimitiveType.Sphere);
       // If the standard shader is not assigned, color assignment in WebGL fails
+      //Debug.Log(joint_name);
+      // /frames information is in millimeters
+      // unity uses metric units 1 meter per unit 
+      // take the average of a person's key points - center of mass - create a physics collider - unity capsule collider - set radius - can check for collisions
+      // mesh shows up but no physical properties - colliders can or cannot intersect
+      // create a mesh (cylinder or sphere) creates a covid bubble - 3D alpha property on shader and it's how we render it, color or texture applied, could draw a circle, 2D; 
+      // can check interactions between colliders
+      if(joint_name == "LAnkle" ^ joint_name == "RAnkle"){
+        o = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+        o.transform.localScale = new Vector3(2f, 0.00001f, 1f);
+      }
+      else{
+        o.transform.localScale = new Vector3(JointScale, JointScale, JointScale);
+      }
       o.GetComponent<Renderer>().material.shader = Shader.Find("Standard");
       o.name = joint_name;
-      o.transform.localScale = new Vector3(JointScale, JointScale, JointScale);
+      //o.transform.localScale = new Vector3(JointScale, JointScale, JointScale);
       o.transform.parent = skeleton;
       joint = o.transform;
     }
