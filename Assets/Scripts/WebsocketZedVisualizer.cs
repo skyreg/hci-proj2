@@ -169,6 +169,13 @@ public class WebsocketZedVisualizer : MonoBehaviour
     //Debug.Log(avatar_transforms[id]["PELVIS"].localRotation);
     //avatar_transforms[id]["PELVIS"].localRotation = Quaternion.identity;
 
+    //add collider here
+    sphere_collider = track.gameObject.AddComponent<SphereCollider>();
+    // sphere_collider.transform = track.transform;
+    sphere_collider.center = Vector3.zero; // centers at the origin - how can we center this?
+    sphere_collider.radius = 1.8288f; // i think this is 6 feet in Unity coordinates
+    // Debug.Log(track);
+
     foreach (KeyValuePair<string, SimpleJSON.JSONNode> joint in joints) {
       if (joint.Value[9] == 0) { continue; }
       if (UseAvatar) {
