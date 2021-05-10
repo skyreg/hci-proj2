@@ -172,9 +172,25 @@ public class WebsocketZedVisualizer : MonoBehaviour
     //add collider here
     sphere_collider = track.gameObject.AddComponent<SphereCollider>();
     // sphere_collider.transform = track.transform;
-    sphere_collider.center = Vector3.zero; // centers at the origin - how can we center this?
+    //sphere_collider.center = Vector3.zero; // centers at the origin - how can we center this?
     sphere_collider.radius = 1.8288f; // i think this is 6 feet in Unity coordinates
     // Debug.Log(track);
+    float a=0;
+    float x=0;
+    float y=0;
+    float z=0;
+    foreach (KeyValuePair<string, SimpleJSON.JSONNode> joint in joints) {
+      x+=joint.Value[0];
+      y+=joint.Value[1];
+      z+=joint.Value[2];
+      a+=1;
+    }
+    x = x/a;
+    y = y/a;
+    z = z/a;
+    sphere_collider.center = CameraToUnity(x, y, z);
+    //sphere_collider.GetComponent<Renderer>().material.color = Color.blue;
+    //Debug.Log(x + " " + y + " " + z);
 
     foreach (KeyValuePair<string, SimpleJSON.JSONNode> joint in joints) {
       if (joint.Value[9] == 0) { continue; }
