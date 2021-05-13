@@ -208,7 +208,7 @@ public class WebsocketZedVisualizer : MonoBehaviour
           //Debug.Log(joint.Key + " " + joint.Value[0] + " " + joint.Value[2]);
         }
       }
-      if(1 == 1){
+      if(avgz != 0){
         float avg1 = avgx/count;
         float avg2 = avgz/count;
         //Debug.Log("avg1: " + avg1 + " avg2: " + avg2);
