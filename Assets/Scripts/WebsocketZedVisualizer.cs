@@ -289,7 +289,7 @@ public class WebsocketZedVisualizer : MonoBehaviour
             //Vector3 check_median_pos = CameraToUnity(UnitConversion*other_median_x, UnitConversion*other_median_y, UnitConversion*other_median_z);
             Vector3 check_median_pos = next_skeleton.Find("Boundary").position;
             float distance = Vector3.Distance(median_pos, check_median_pos);
-            Debug.Log("distance: " + distance);
+            //Debug.Log("distance: " + distance);
             //Debug.Log(median_pos + " " + other_skeleton.position + " " + distance);
             //1.8288
             skeleton.Find("Boundary").gameObject.GetComponent<Renderer>().material.color = Color.green;
